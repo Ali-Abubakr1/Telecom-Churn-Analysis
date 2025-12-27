@@ -72,3 +72,32 @@ Interpretability
 ROC Curve: The model shows a strong separation capability with an AUC of 0.83.
 
 Feature Importance: The analysis revealed that Contract Type, Monthly Charges, and Tenure are the top drivers for customer churn. Short-term contracts and high monthly bills significantly increase churn risk.
+
+💻 How to Run
+Clone the repository:
+
+Bash
+
+git clone https://github.com/your-username/Telecom-Churn-Prediction.git
+cd Telecom-Churn-Prediction
+Install dependencies:
+
+Bash
+
+pip install -r requirements.txt
+Run the Notebook: Open notebooks/Churn_Analysis.ipynb in Jupyter Notebook or VS Code to see the full analysis.
+
+Use the Model (Example):
+
+Python
+
+import joblib
+model = joblib.load('models/churn_prediction_model.pkl')
+# Use model.predict(new_data)
+👤 Author
+Ali Abubakr Farag Ali
+Artificial Intelligence & Data Science Student
+
+http://linkedin.com/in/aliabubakr1
+
+Feel free to star ⭐ this repository if you find it helpful!
