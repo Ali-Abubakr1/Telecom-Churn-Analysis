@@ -95,7 +95,9 @@ import joblib
 model = joblib.load('models/churn_prediction_model.pkl')
 # Use model.predict(new_data)
 👤 Author
+
 Ali Abubakr Farag Ali
+
 Artificial Intelligence & Data Science Student
 
 http://linkedin.com/in/aliabubakr1
