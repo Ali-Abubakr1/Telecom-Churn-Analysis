@@ -31,6 +31,11 @@ Imbalanced Data Handling: SMOTE (Imbalanced-Learn)
 
 Model Saving: Joblib
 
+## 📂 Dataset
+The dataset used in this project is the **Telco Customer Churn** dataset from Kaggle.
+* **Source:** [Telco Customer Churn - Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
+* **Description:** It contains information about a fictional telco company that provided home phone and Internet services to 7,043 customers in California. It includes details such as customer demographics, services signed up for, and account information.
+
 # 🚀 Key Steps
 Data Cleaning:
 
