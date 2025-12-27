@@ -93,7 +93,6 @@ Python
 
 import joblib
 model = joblib.load('models/churn_prediction_model.pkl')
-Use model.predict(new_data)
 
 
 👤 Author
