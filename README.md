@@ -67,7 +67,7 @@ Applied SMOTE to oversample the minority class, significantly improving the mode
 Model Performance (After SMOTE)
 Algorithm: XGBoost Classifier
 
-Accuracy: 77%
+Accuracy: 80.7%
 
 Recall (Churn Class): 0.69 (Good ability to catch potential churners)
 
