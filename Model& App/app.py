@@ -3,10 +3,10 @@ import joblib
 import pandas as pd
 import numpy as np
 
-# 1. إعداد الصفحة
+
 st.set_page_config(page_title="Telco Churn AI", page_icon="📊", layout="wide")
 
-# Custom CSS
+
 st.markdown("""
 <style>
     .stButton>button {width: 100%; background-color: #FF4B4B; color: white;}
@@ -14,19 +14,19 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 2. تحميل الموديل والسكيلر (ضروري جداً)
+
 try:
     model = joblib.load('churn_prediction_model.pkl')
-    scaler = joblib.load('scaler.pkl')  # تحميل السكيلر
+    scaler = joblib.load('scaler.pkl') 
 except FileNotFoundError:
     st.error("⚠️ ملفات الموديل ناقصة! تأكد من وجود 'churn_model.pkl' و 'scaler.pkl'")
     st.stop()
 
-# 3. العنوان
+
 st.title("📊 Customer Churn Prediction AI")
 st.markdown("---")
 
-# 4. واجهة الإدخال
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -59,11 +59,11 @@ with col3:
         streaming_tv = st.selectbox("Streaming TV", ["Yes", "No", "No internet service"])
         streaming_movies = st.selectbox("Streaming Movies", ["Yes", "No", "No internet service"])
 
-# 5. التوقع
+
 st.markdown("---")
 if st.button("🚀 Predict Result"):
     
-    # قائمة الأعمدة (لازم تكون نفس ترتيب التدريب بالظبط)
+
     columns = [
         'SeniorCitizen', 'tenure', 'MonthlyCharges', 'TotalCharges', 'gender_Male', 
         'Partner_Yes', 'Dependents_Yes', 'PhoneService_Yes', 'MultipleLines_No phone service', 
@@ -78,7 +78,7 @@ if st.button("🚀 Predict Result"):
     
     input_df = pd.DataFrame(0, index=[0], columns=columns)
     
-    # --- تعبئة البيانات ---
+
     input_df['tenure'] = tenure
     input_df['MonthlyCharges'] = monthly_charges
     input_df['TotalCharges'] = total_charges
@@ -121,29 +121,21 @@ if st.button("🚀 Predict Result"):
     elif payment == "Electronic check": input_df['PaymentMethod_Electronic check'] = 1
     elif payment == "Mailed check": input_df['PaymentMethod_Mailed check'] = 1
 
-    # ==========================================
-    # ⚠️ الخطوة الحاسمة: تطبيق الـ Scaling
-    # ==========================================
-    # لازم نختار نفس الأعمدة اللي عملنا عليها fit في النوت بوك
     cols_to_scale = ['tenure', 'MonthlyCharges', 'TotalCharges']
     
-    # ==========================================
-    # ⚠️ تصحيح خطأ الـ Scaling
-    # ==========================================
+  
     
-    # بما إن السكيلر اتدرب على الداتا كلها، لازم نبعت له الـ DataFrame كله
     try:
-        # السطر ده هيحول الداتا كلها (الـ 30 عمود) بناءً على اللي اتعلمه
+
         input_df = scaler.transform(input_df)
     except Exception as e:
         st.error(f"خطأ في الـ Scaling: {e}")
         st.stop()
 
-    # --- التوقع ---
     prediction = model.predict(input_df)[0]
     probability = model.predict_proba(input_df)[0][1]
+
     
-    # عرض النتائج
     r1, r2 = st.columns([1, 2])
     with r1:
         if prediction == 1:
